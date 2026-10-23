@@ -1,0 +1,100 @@
+{
+  "run_id": "20261023-195540-686580",
+  "run_started_utc": "2026-10-23T14:25:40.686785+00:00",
+  "rescored_at_utc": "2026-10-23T14:25:40.686785+00:00",
+  "evaluation_type": "offline_rescore",
+  "selected_cases": [
+    "T01",
+    "T02",
+    "T03"
+  ],
+  "models": [
+    "prebuilt-read",
+    "prebuilt-layout"
+  ],
+  "requests_total": 0,
+  "wall_seconds": 0,
+  "source_run_ids": [
+    "20261023-135652-525428",
+    "20261023-140616-775138",
+    "20261023-140850-182611"
+  ],
+  "performance_note": "No Azure requests were made. Document latency values are carried over from the source Azure runs; offline re-scoring is not a new performance sample.",
+  "accuracy_note": "Text accuracy uses the current human-reviewed transcripts after case and whitespace normalization; CER/WER are text similarity, not semantic field accuracy.",
+  "by_model": {
+    "prebuilt-read": {
+      "documents_total": 3,
+      "documents_succeeded": 3,
+      "documents_failed": 0,
+      "page_units_succeeded": 13,
+      "wall_seconds_shared_run": 0.0,
+      "throughput_documents_per_second_shared_run": 0,
+      "workers": 0,
+      "latency_seconds": {
+        "mean": 6.74,
+        "median": 5.1016,
+        "p95": 11.0241,
+        "min": 4.0944,
+        "max": 11.0241
+      },
+      "text_accuracy": {
+        "documents_scored": 3,
+        "character_error_rate_weighted": 0.011548,
+        "character_accuracy_weighted": 0.988452,
+        "word_error_rate_weighted": 0.021019,
+        "word_accuracy_weighted": 0.978981,
+        "exact_match_documents": 2
+      },
+      "table_structure": {
+        "reference_cases": 1,
+        "shape_matches": 0,
+        "weighted_cell_accuracy": 0.159243
+      },
+      "figure_detection": {
+        "cases": 0,
+        "exact_count_matches": 0
+      },
+      "office_embedded_image_limit": {
+        "cases": 0,
+        "marker_absent_as_expected": 0
+      }
+    },
+    "prebuilt-layout": {
+      "documents_total": 3,
+      "documents_succeeded": 3,
+      "documents_failed": 0,
+      "page_units_succeeded": 13,
+      "wall_seconds_shared_run": 0.0,
+      "throughput_documents_per_second_shared_run": 0,
+      "workers": 0,
+      "latency_seconds": {
+        "mean": 9.5605,
+        "median": 8.8351,
+        "p95": 12.8426,
+        "min": 7.0038,
+        "max": 12.8426
+      },
+      "text_accuracy": {
+        "documents_scored": 3,
+        "character_error_rate_weighted": 0.020851,
+        "character_accuracy_weighted": 0.979149,
+        "word_error_rate_weighted": 0.021656,
+        "word_accuracy_weighted": 0.978344,
+        "exact_match_documents": 2
+      },
+      "table_structure": {
+        "reference_cases": 1,
+        "shape_matches": 1,
+        "weighted_cell_accuracy": 0.986637
+      },
+      "figure_detection": {
+        "cases": 1,
+        "exact_count_matches": 1
+      },
+      "office_embedded_image_limit": {
+        "cases": 0,
+        "marker_absent_as_expected": 0
+      }
+    }
+  }
+}

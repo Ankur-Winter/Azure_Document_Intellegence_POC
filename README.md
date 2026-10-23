@@ -6,7 +6,9 @@ This project sends a document to Azure only when you run `analyze` without `--dr
 
 ## What belongs in Git
 
-The repository contains the code, an example environment file, and a test-matrix template/list. Document inputs, ground-truth transcripts, real `.env` files, and generated `results/` are local files and are ignored by Git. After cloning, add your own test documents and verified reference files before running an analysis. The current matrix includes the POC's T01–T14 case metadata; those input files and their reference transcripts are intentionally not included.
+The repository includes a small public demo seed for T01–T03: three input documents, their ground-truth references (including the T02 table JSON), and one offline re-score snapshot with both models' saved Azure JSON/text responses and metrics. This lets a new clone open the dashboard before configuring Azure credentials. The current matrix lists T01–T14, but inputs, references, and saved results for T04–T14 are not included.
+
+This is a public GitHub repository. Only add documents and extracted results that are cleared for public sharing. Real `.env` files and all other local documents, ground truths, and generated results remain ignored by Git.
 
 ## Requirements and setup
 
@@ -33,6 +35,16 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
+
+### View the included demo without Azure credentials
+
+Once dependencies are installed, start the dashboard immediately:
+
+```bash
+docintel-poc dashboard
+```
+
+Open `http://127.0.0.1:8765`. The dashboard uses the included T01–T03 result snapshot and does not read `.env` or call Azure. The supplied reference files are candidate ground truths; review `data/ground_truth/README.md` and the matrix notes before treating their accuracy scores as authoritative. T04–T14 are listed in the matrix as examples, but their input files and reference data need to be added locally. To analyze a document yourself, continue with the Azure credential setup below.
 
 Copy `.env.example` to `.env` in the project root. Replace the placeholders in `.env` with the endpoint and key provided for your resource. `AZURE_DI_REGION` is an optional label used in reports; the endpoint determines the resource. Never put real credentials in `.env.example`, source code, the test matrix, or a commit. `.env` is ignored by Git.
 
@@ -179,7 +191,7 @@ Each analysis run creates a timestamped folder under `results/`:
 - `documents/<model>/<filename>.json`: raw Azure response for that input/model.
 - `documents/<model>/<filename>.txt`: extracted text.
 
-The CLI also appends cumulative metrics to `results/history/document_metrics.csv` and `results/history/run_metrics.csv`. Generated result files can contain extracted document content and are ignored by Git.
+The CLI also appends cumulative metrics to `results/history/document_metrics.csv` and `results/history/run_metrics.csv`. Generated result files can contain extracted document content. Only the reviewed T01–T03 demo snapshot is included in Git; other generated result folders and history files are ignored.
 
 If you edit a matrix expectation or ground truth after an Azure run, recalculate the selected case against saved responses without calling Azure:
 
@@ -187,7 +199,7 @@ If you edit a matrix expectation or ground truth after an Azure run, recalculate
 docintel-poc rescore --case T15
 ```
 
-Re-scoring creates a separate offline snapshot under `results/`, preserves the original API run/history, and carries the original latency as context. It does not refresh the Azure response or measure a new service call.
+Re-scoring creates a separate offline snapshot under `results/`, preserves the original API run/history, and carries the original latency as context. It does not refresh the Azure response or measure a new service call. The checked-in T01–T03 demo uses this format: the saved responses came from Azure, while its scores were recalculated from those responses without new Azure requests.
 
 ## Run the dashboard
 

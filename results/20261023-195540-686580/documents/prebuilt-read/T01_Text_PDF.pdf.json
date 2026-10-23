@@ -1,0 +1,2084 @@
+{
+  "apiVersion": "2024-11-30",
+  "modelId": "prebuilt-read",
+  "stringIndexType": "textElements",
+  "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea taki- mata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n1",
+  "pages": [
+    {
+      "pageNumber": 1,
+      "angle": 0,
+      "width": 8.2639,
+      "height": 11.6806,
+      "unit": "inch",
+      "words": [
+        {
+          "content": "Lorem",
+          "polygon": [
+            1.3776,
+            1.1967,
+            1.8093,
+            1.1962,
+            1.8091,
+            1.357,
+            1.3776,
+            1.3564
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 0,
+            "length": 5
+          }
+        },
+        {
+          "content": "ipsum",
+          "polygon": [
+            1.8835,
+            1.1962,
+            2.2755,
+            1.1958,
+            2.275,
+            1.3576,
+            1.8832,
+            1.3571
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 6,
+            "length": 5
+          }
+        },
+        {
+          "content": "dolor",
+          "polygon": [
+            2.3444,
+            1.1958,
+            2.6781,
+            1.1956,
+            2.6773,
+            1.358,
+            2.3438,
+            1.3577
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 12,
+            "length": 5
+          }
+        },
+        {
+          "content": "sit",
+          "polygon": [
+            2.747,
+            1.1955,
+            2.9059,
+            1.1954,
+            2.905,
+            1.3582,
+            2.7462,
+            1.3581
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 18,
+            "length": 3
+          }
+        },
+        {
+          "content": "amet,",
+          "polygon": [
+            2.9774,
+            1.1954,
+            3.3376,
+            1.1953,
+            3.3365,
+            1.3585,
+            2.9765,
+            1.3583
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 22,
+            "length": 5
+          }
+        },
+        {
+          "content": "consetetur",
+          "polygon": [
+            3.4197,
+            1.1953,
+            4.0978,
+            1.1952,
+            4.0962,
+            1.3587,
+            3.4185,
+            1.3585
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 28,
+            "length": 10
+          }
+        },
+        {
+          "content": "sadipscing",
+          "polygon": [
+            4.1693,
+            1.1952,
+            4.8421,
+            1.1954,
+            4.8401,
+            1.3585,
+            4.1677,
+            1.3586
+          ],
+          "confidence": 0.994,
+          "span": {
+            "offset": 39,
+            "length": 10
+          }
+        },
+        {
+          "content": "elitr,",
+          "polygon": [
+            4.9109,
+            1.1955,
+            5.2129,
+            1.1956,
+            5.2107,
+            1.3583,
+            4.9089,
+            1.3584
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 50,
+            "length": 6
+          }
+        },
+        {
+          "content": "sed",
+          "polygon": [
+            5.295,
+            1.1957,
+            5.5042,
+            1.1958,
+            5.5019,
+            1.358,
+            5.2927,
+            1.3582
+          ],
+          "confidence": 0.999,
+          "span": {
+            "offset": 57,
+            "length": 3
+          }
+        },
+        {
+          "content": "diam",
+          "polygon": [
+            5.5731,
+            1.1959,
+            5.8989,
+            1.1962,
+            5.8963,
+            1.3576,
+            5.5707,
+            1.358
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 61,
+            "length": 4
+          }
+        },
+        {
+          "content": "nonumy",
+          "polygon": [
+            5.9678,
+            1.1962,
+            6.4895,
+            1.1968,
+            6.4866,
+            1.3568,
+            5.9651,
+            1.3575
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 66,
+            "length": 6
+          }
+        },
+        {
+          "content": "eirmod",
+          "polygon": [
+            6.5611,
+            1.1969,
+            7.0319,
+            1.1975,
+            7.0319,
+            1.356,
+            6.5581,
+            1.3567
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 73,
+            "length": 6
+          }
+        },
+        {
+          "content": "tempor",
+          "polygon": [
+            1.2283,
+            1.3864,
+            1.7113,
+            1.3855,
+            1.7111,
+            1.543,
+            1.2283,
+            1.5404
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 80,
+            "length": 6
+          }
+        },
+        {
+          "content": "invidunt",
+          "polygon": [
+            1.7668,
+            1.3854,
+            2.3131,
+            1.3845,
+            2.3125,
+            1.5459,
+            1.7665,
+            1.5433
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 87,
+            "length": 8
+          }
+        },
+        {
+          "content": "ut",
+          "polygon": [
+            2.3738,
+            1.3844,
+            2.5085,
+            1.3842,
+            2.5077,
+            1.5466,
+            2.3732,
+            1.5461
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 96,
+            "length": 2
+          }
+        },
+        {
+          "content": "labore",
+          "polygon": [
+            2.5692,
+            1.3841,
+            2.9756,
+            1.3837,
+            2.9747,
+            1.5481,
+            2.5684,
+            1.5468
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 99,
+            "length": 6
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            3.0284,
+            1.3837,
+            3.1498,
+            1.3836,
+            3.1488,
+            1.5485,
+            3.0274,
+            1.5482
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 106,
+            "length": 2
+          }
+        },
+        {
+          "content": "dolore",
+          "polygon": [
+            3.2132,
+            1.3836,
+            3.6118,
+            1.3833,
+            3.6104,
+            1.5493,
+            3.2121,
+            1.5486
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 109,
+            "length": 6
+          }
+        },
+        {
+          "content": "magna",
+          "polygon": [
+            3.6698,
+            1.3833,
+            4.108,
+            1.3833,
+            4.1064,
+            1.5495,
+            3.6685,
+            1.5494
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 116,
+            "length": 5
+          }
+        },
+        {
+          "content": "aliquyam",
+          "polygon": [
+            4.1608,
+            1.3833,
+            4.7599,
+            1.3836,
+            4.758,
+            1.5492,
+            4.1591,
+            1.5495
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 122,
+            "length": 8
+          }
+        },
+        {
+          "content": "erat,",
+          "polygon": [
+            4.8154,
+            1.3836,
+            5.111,
+            1.3839,
+            5.1088,
+            1.5486,
+            4.8134,
+            1.5491
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 131,
+            "length": 5
+          }
+        },
+        {
+          "content": "sed",
+          "polygon": [
+            5.1743,
+            1.3839,
+            5.3829,
+            1.3841,
+            5.3805,
+            1.5481,
+            5.1721,
+            1.5485
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 137,
+            "length": 3
+          }
+        },
+        {
+          "content": "diam",
+          "polygon": [
+            5.4383,
+            1.3842,
+            5.7656,
+            1.3847,
+            5.763,
+            1.5467,
+            5.4359,
+            1.5479
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 141,
+            "length": 4
+          }
+        },
+        {
+          "content": "voluptua.",
+          "polygon": [
+            5.8184,
+            1.3848,
+            6.4307,
+            1.3858,
+            6.4278,
+            1.5439,
+            5.8158,
+            1.5466
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 146,
+            "length": 9
+          }
+        },
+        {
+          "content": "At",
+          "polygon": [
+            6.5205,
+            1.386,
+            6.6841,
+            1.3864,
+            6.6811,
+            1.5426,
+            6.5175,
+            1.5435
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 156,
+            "length": 2
+          }
+        },
+        {
+          "content": "vero",
+          "polygon": [
+            6.7369,
+            1.3865,
+            7.0319,
+            1.3871,
+            7.0319,
+            1.5408,
+            6.7338,
+            1.5424
+          ],
+          "confidence": 0.989,
+          "span": {
+            "offset": 159,
+            "length": 4
+          }
+        },
+        {
+          "content": "eos",
+          "polygon": [
+            1.2274,
+            1.5862,
+            1.4421,
+            1.5847,
+            1.4389,
+            1.7341,
+            1.2241,
+            1.7336
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 164,
+            "length": 3
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            1.4893,
+            1.5843,
+            1.6098,
+            1.5835,
+            1.6065,
+            1.7346,
+            1.486,
+            1.7343
+          ],
+          "confidence": 0.999,
+          "span": {
+            "offset": 168,
+            "length": 2
+          }
+        },
+        {
+          "content": "accusam",
+          "polygon": [
+            1.6674,
+            1.5831,
+            2.2227,
+            1.5795,
+            2.2195,
+            1.7361,
+            1.6642,
+            1.7347
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 171,
+            "length": 7
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            2.2698,
+            1.5793,
+            2.3903,
+            1.5787,
+            2.3871,
+            1.7365,
+            2.2666,
+            1.7362
+          ],
+          "confidence": 0.999,
+          "span": {
+            "offset": 179,
+            "length": 2
+          }
+        },
+        {
+          "content": "justo",
+          "polygon": [
+            2.4349,
+            1.5785,
+            2.7649,
+            1.5768,
+            2.7617,
+            1.7372,
+            2.4316,
+            1.7365
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 182,
+            "length": 5
+          }
+        },
+        {
+          "content": "duo",
+          "polygon": [
+            2.8173,
+            1.5766,
+            3.0583,
+            1.5757,
+            3.055,
+            1.7377,
+            2.814,
+            1.7373
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 188,
+            "length": 3
+          }
+        },
+        {
+          "content": "dolores",
+          "polygon": [
+            3.108,
+            1.5756,
+            3.569,
+            1.5742,
+            3.5658,
+            1.7384,
+            3.1048,
+            1.7378
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 192,
+            "length": 7
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            3.6188,
+            1.5741,
+            3.7393,
+            1.5738,
+            3.7361,
+            1.7386,
+            3.6156,
+            1.7384
+          ],
+          "confidence": 0.999,
+          "span": {
+            "offset": 200,
+            "length": 2
+          }
+        },
+        {
+          "content": "ea",
+          "polygon": [
+            3.7917,
+            1.5737,
+            3.9384,
+            1.5736,
+            3.9351,
+            1.7387,
+            3.7884,
+            1.7386
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 203,
+            "length": 2
+          }
+        },
+        {
+          "content": "rebum.",
+          "polygon": [
+            3.9829,
+            1.5735,
+            4.4387,
+            1.5731,
+            4.4354,
+            1.7389,
+            3.9797,
+            1.7388
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 206,
+            "length": 6
+          }
+        },
+        {
+          "content": "Stet",
+          "polygon": [
+            4.5173,
+            1.5731,
+            4.7766,
+            1.5733,
+            4.7733,
+            1.7389,
+            4.514,
+            1.7389
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 213,
+            "length": 4
+          }
+        },
+        {
+          "content": "clita",
+          "polygon": [
+            4.829,
+            1.5734,
+            5.1171,
+            1.5737,
+            5.1139,
+            1.7389,
+            4.8257,
+            1.7389
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 218,
+            "length": 5
+          }
+        },
+        {
+          "content": "kasd",
+          "polygon": [
+            5.1642,
+            1.5737,
+            5.4524,
+            1.5742,
+            5.4491,
+            1.7389,
+            5.161,
+            1.7389
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 224,
+            "length": 4
+          }
+        },
+        {
+          "content": "gubergren,",
+          "polygon": [
+            5.5048,
+            1.5744,
+            6.1989,
+            1.5766,
+            6.1957,
+            1.7386,
+            5.5015,
+            1.7389
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 229,
+            "length": 10
+          }
+        },
+        {
+          "content": "no",
+          "polygon": [
+            6.2539,
+            1.5769,
+            6.4137,
+            1.5777,
+            6.4104,
+            1.7382,
+            6.2507,
+            1.7384
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 240,
+            "length": 2
+          }
+        },
+        {
+          "content": "sea",
+          "polygon": [
+            6.4634,
+            1.578,
+            6.6651,
+            1.5791,
+            6.6619,
+            1.7379,
+            6.4602,
+            1.7381
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 243,
+            "length": 3
+          }
+        },
+        {
+          "content": "taki-",
+          "polygon": [
+            6.7123,
+            1.5793,
+            7.0318,
+            1.581,
+            7.0286,
+            1.7374,
+            6.709,
+            1.7378
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 247,
+            "length": 5
+          }
+        },
+        {
+          "content": "mata",
+          "polygon": [
+            1.2251,
+            1.7724,
+            1.576,
+            1.7709,
+            1.5758,
+            1.9162,
+            1.2251,
+            1.9135
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 253,
+            "length": 4
+          }
+        },
+        {
+          "content": "sanctus",
+          "polygon": [
+            1.6294,
+            1.7706,
+            2.1151,
+            1.7686,
+            2.1146,
+            1.9202,
+            1.6292,
+            1.9166
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 258,
+            "length": 7
+          }
+        },
+        {
+          "content": "est",
+          "polygon": [
+            2.1685,
+            1.7685,
+            2.3516,
+            1.7679,
+            2.351,
+            1.9215,
+            2.168,
+            1.9205
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 266,
+            "length": 3
+          }
+        },
+        {
+          "content": "Lorem",
+          "polygon": [
+            2.4101,
+            1.7677,
+            2.8322,
+            1.7664,
+            2.8313,
+            1.924,
+            2.4094,
+            1.9218
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 270,
+            "length": 5
+          }
+        },
+        {
+          "content": "ipsum",
+          "polygon": [
+            2.8882,
+            1.7663,
+            3.2798,
+            1.7656,
+            3.2786,
+            1.9255,
+            2.8872,
+            1.9244
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 276,
+            "length": 5
+          }
+        },
+        {
+          "content": "dolor",
+          "polygon": [
+            3.3357,
+            1.7655,
+            3.6714,
+            1.7649,
+            3.67,
+            1.9265,
+            3.3345,
+            1.9257
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 282,
+            "length": 5
+          }
+        },
+        {
+          "content": "sit",
+          "polygon": [
+            3.7248,
+            1.7648,
+            3.8799,
+            1.7647,
+            3.8784,
+            1.9265,
+            3.7234,
+            1.9265
+          ],
+          "confidence": 0.999,
+          "span": {
+            "offset": 288,
+            "length": 3
+          }
+        },
+        {
+          "content": "amet.",
+          "polygon": [
+            3.9409,
+            1.7647,
+            4.2995,
+            1.7645,
+            4.2977,
+            1.9265,
+            3.9394,
+            1.9265
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 292,
+            "length": 5
+          }
+        },
+        {
+          "content": "Lorem",
+          "polygon": [
+            4.3834,
+            1.7644,
+            4.808,
+            1.7645,
+            4.806,
+            1.9265,
+            4.3816,
+            1.9265
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 298,
+            "length": 5
+          }
+        },
+        {
+          "content": "ipsum",
+          "polygon": [
+            4.8614,
+            1.7646,
+            5.2556,
+            1.7649,
+            5.2533,
+            1.9263,
+            4.8594,
+            1.9265
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 304,
+            "length": 5
+          }
+        },
+        {
+          "content": "dolor",
+          "polygon": [
+            5.3115,
+            1.7649,
+            5.6446,
+            1.7655,
+            5.6422,
+            1.925,
+            5.3092,
+            1.9262
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 310,
+            "length": 5
+          }
+        },
+        {
+          "content": "sit",
+          "polygon": [
+            5.7006,
+            1.7656,
+            5.8532,
+            1.7659,
+            5.8506,
+            1.9242,
+            5.6981,
+            1.9248
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 316,
+            "length": 3
+          }
+        },
+        {
+          "content": "amet,",
+          "polygon": [
+            5.9167,
+            1.766,
+            6.3083,
+            1.7669,
+            6.3055,
+            1.9221,
+            5.9141,
+            1.924
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 320,
+            "length": 5
+          }
+        },
+        {
+          "content": "consetetur",
+          "polygon": [
+            6.3414,
+            1.7671,
+            7.0268,
+            1.7692,
+            7.0268,
+            1.9177,
+            6.3385,
+            1.9219
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 326,
+            "length": 10
+          }
+        },
+        {
+          "content": "sadipscing",
+          "polygon": [
+            1.2251,
+            1.955,
+            1.9126,
+            1.9536,
+            1.9094,
+            2.1139,
+            1.2219,
+            2.1129
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 337,
+            "length": 10
+          }
+        },
+        {
+          "content": "elitr,",
+          "polygon": [
+            1.9759,
+            1.9535,
+            2.2788,
+            1.9531,
+            2.2755,
+            2.1141,
+            1.9726,
+            2.114
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 348,
+            "length": 6
+          }
+        },
+        {
+          "content": "sed",
+          "polygon": [
+            2.3499,
+            1.953,
+            2.558,
+            1.9527,
+            2.5548,
+            2.1141,
+            2.3467,
+            2.1141
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 355,
+            "length": 3
+          }
+        },
+        {
+          "content": "diam",
+          "polygon": [
+            2.6212,
+            1.9526,
+            2.9479,
+            1.9522,
+            2.9446,
+            2.1141,
+            2.618,
+            2.1141
+          ],
+          "confidence": 0.989,
+          "span": {
+            "offset": 359,
+            "length": 4
+          }
+        },
+        {
+          "content": "nonumy",
+          "polygon": [
+            3.0084,
+            1.9522,
+            3.5326,
+            1.9518,
+            3.5294,
+            2.1141,
+            3.0052,
+            2.1141
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 364,
+            "length": 6
+          }
+        },
+        {
+          "content": "eirmod",
+          "polygon": [
+            3.5932,
+            1.9518,
+            4.0516,
+            1.9517,
+            4.0483,
+            2.1141,
+            3.59,
+            2.1141
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 371,
+            "length": 6
+          }
+        },
+        {
+          "content": "tempor",
+          "polygon": [
+            4.1122,
+            1.9517,
+            4.5863,
+            1.9516,
+            4.5831,
+            2.1141,
+            4.1089,
+            2.1141
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 378,
+            "length": 6
+          }
+        },
+        {
+          "content": "invidunt",
+          "polygon": [
+            4.6495,
+            1.9517,
+            5.1948,
+            1.952,
+            5.1916,
+            2.1141,
+            4.6463,
+            2.1141
+          ],
+          "confidence": 0.994,
+          "span": {
+            "offset": 385,
+            "length": 8
+          }
+        },
+        {
+          "content": "ut",
+          "polygon": [
+            5.2607,
+            1.952,
+            5.3976,
+            1.9521,
+            5.3944,
+            2.1139,
+            5.2574,
+            2.1141
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 394,
+            "length": 2
+          }
+        },
+        {
+          "content": "labore",
+          "polygon": [
+            5.4635,
+            1.9522,
+            5.8692,
+            1.9527,
+            5.8659,
+            2.1132,
+            5.4603,
+            2.1138
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 397,
+            "length": 6
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            5.9297,
+            1.9528,
+            6.0509,
+            1.9529,
+            6.0477,
+            2.113,
+            5.9265,
+            2.1131
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 404,
+            "length": 2
+          }
+        },
+        {
+          "content": "dolore",
+          "polygon": [
+            6.1194,
+            1.953,
+            6.5224,
+            1.9537,
+            6.5192,
+            2.1121,
+            6.1162,
+            2.1129
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 407,
+            "length": 6
+          }
+        },
+        {
+          "content": "magna",
+          "polygon": [
+            6.583,
+            1.9538,
+            7.0471,
+            1.9546,
+            7.0471,
+            2.111,
+            6.5798,
+            2.1119
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 414,
+            "length": 5
+          }
+        },
+        {
+          "content": "aliquyam",
+          "polygon": [
+            1.2251,
+            2.1425,
+            1.8397,
+            2.1421,
+            1.8397,
+            2.3016,
+            1.2251,
+            2.3016
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 420,
+            "length": 8
+          }
+        },
+        {
+          "content": "erat,",
+          "polygon": [
+            1.8988,
+            2.1421,
+            2.194,
+            2.1418,
+            2.194,
+            2.3016,
+            1.8988,
+            2.3016
+          ],
+          "confidence": 0.993,
+          "span": {
+            "offset": 429,
+            "length": 5
+          }
+        },
+        {
+          "content": "sed",
+          "polygon": [
+            2.2691,
+            2.1418,
+            2.4758,
+            2.1416,
+            2.4758,
+            2.3016,
+            2.2691,
+            2.3016
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 435,
+            "length": 3
+          }
+        },
+        {
+          "content": "diam",
+          "polygon": [
+            2.5402,
+            2.1415,
+            2.8649,
+            2.1413,
+            2.8649,
+            2.3016,
+            2.5402,
+            2.3016
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 439,
+            "length": 4
+          }
+        },
+        {
+          "content": "voluptua.",
+          "polygon": [
+            2.9267,
+            2.1412,
+            3.5386,
+            2.1405,
+            3.5386,
+            2.3016,
+            2.9267,
+            2.3016
+          ],
+          "confidence": 0.994,
+          "span": {
+            "offset": 444,
+            "length": 9
+          }
+        },
+        {
+          "content": "At",
+          "polygon": [
+            3.6513,
+            2.1404,
+            3.8123,
+            2.1402,
+            3.8123,
+            2.3016,
+            3.6513,
+            2.3016
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 454,
+            "length": 2
+          }
+        },
+        {
+          "content": "vero",
+          "polygon": [
+            3.8767,
+            2.1401,
+            4.1558,
+            2.1398,
+            4.1558,
+            2.3016,
+            3.8767,
+            2.3016
+          ],
+          "confidence": 0.99,
+          "span": {
+            "offset": 457,
+            "length": 4
+          }
+        },
+        {
+          "content": "eos",
+          "polygon": [
+            4.2176,
+            2.1397,
+            4.4189,
+            2.1394,
+            4.4189,
+            2.3016,
+            4.2176,
+            2.3016
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 462,
+            "length": 3
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            4.4806,
+            2.1393,
+            4.604,
+            2.1392,
+            4.604,
+            2.3016,
+            4.4806,
+            2.3016
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 466,
+            "length": 2
+          }
+        },
+        {
+          "content": "accusam",
+          "polygon": [
+            4.6711,
+            2.1391,
+            5.2213,
+            2.1382,
+            5.2213,
+            2.3016,
+            4.6711,
+            2.3016
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 469,
+            "length": 7
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            5.2857,
+            2.1381,
+            5.4065,
+            2.1379,
+            5.4065,
+            2.3016,
+            5.2857,
+            2.3016
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 477,
+            "length": 2
+          }
+        },
+        {
+          "content": "justo",
+          "polygon": [
+            5.4629,
+            2.1378,
+            5.7956,
+            2.1372,
+            5.7956,
+            2.3016,
+            5.4629,
+            2.3016
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 480,
+            "length": 5
+          }
+        },
+        {
+          "content": "duo",
+          "polygon": [
+            5.8601,
+            2.1371,
+            6.0989,
+            2.1367,
+            6.0989,
+            2.3016,
+            5.8601,
+            2.3016
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 486,
+            "length": 3
+          }
+        },
+        {
+          "content": "dolores",
+          "polygon": [
+            6.1633,
+            2.1366,
+            6.6249,
+            2.1357,
+            6.6249,
+            2.3016,
+            6.1633,
+            2.3016
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 490,
+            "length": 7
+          }
+        },
+        {
+          "content": "et",
+          "polygon": [
+            6.6894,
+            2.1355,
+            6.8101,
+            2.1353,
+            6.8101,
+            2.3016,
+            6.6894,
+            2.3016
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 498,
+            "length": 2
+          }
+        },
+        {
+          "content": "ea",
+          "polygon": [
+            6.8772,
+            2.1352,
+            7.0471,
+            2.1348,
+            7.0471,
+            2.3013,
+            6.8772,
+            2.3016
+          ],
+          "confidence": 0.994,
+          "span": {
+            "offset": 501,
+            "length": 2
+          }
+        },
+        {
+          "content": "rebum.",
+          "polygon": [
+            1.2219,
+            2.3213,
+            1.6946,
+            2.3225,
+            1.6916,
+            2.4824,
+            1.2187,
+            2.4794
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 504,
+            "length": 6
+          }
+        },
+        {
+          "content": "Stet",
+          "polygon": [
+            1.8034,
+            2.3228,
+            2.061,
+            2.3234,
+            2.0582,
+            2.4848,
+            1.8005,
+            2.4831
+          ],
+          "confidence": 0.989,
+          "span": {
+            "offset": 511,
+            "length": 4
+          }
+        },
+        {
+          "content": "clita",
+          "polygon": [
+            2.1274,
+            2.3236,
+            2.4168,
+            2.3241,
+            2.4142,
+            2.4864,
+            2.1247,
+            2.4851
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 516,
+            "length": 5
+          }
+        },
+        {
+          "content": "kasd",
+          "polygon": [
+            2.4752,
+            2.3242,
+            2.7647,
+            2.3247,
+            2.7623,
+            2.4879,
+            2.4727,
+            2.4866
+          ],
+          "confidence": 0.992,
+          "span": {
+            "offset": 522,
+            "length": 4
+          }
+        },
+        {
+          "content": "gubergren,",
+          "polygon": [
+            2.8257,
+            2.3248,
+            3.5214,
+            2.3256,
+            3.5195,
+            2.4892,
+            2.8234,
+            2.4882
+          ],
+          "confidence": 0.994,
+          "span": {
+            "offset": 527,
+            "length": 10
+          }
+        },
+        {
+          "content": "no",
+          "polygon": [
+            3.5905,
+            2.3257,
+            3.7471,
+            2.3258,
+            3.7453,
+            2.4892,
+            3.5885,
+            2.4892
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 538,
+            "length": 2
+          }
+        },
+        {
+          "content": "sea",
+          "polygon": [
+            3.8109,
+            2.3259,
+            4.0153,
+            2.326,
+            4.0136,
+            2.4892,
+            3.8091,
+            2.4892
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 541,
+            "length": 3
+          }
+        },
+        {
+          "content": "takimata",
+          "polygon": [
+            4.0737,
+            2.326,
+            4.6685,
+            2.3261,
+            4.6672,
+            2.4892,
+            4.0721,
+            2.4892
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 545,
+            "length": 8
+          }
+        },
+        {
+          "content": "sanctus",
+          "polygon": [
+            4.7269,
+            2.3261,
+            5.2129,
+            2.3259,
+            5.2119,
+            2.4892,
+            4.7257,
+            2.4892
+          ],
+          "confidence": 0.995,
+          "span": {
+            "offset": 554,
+            "length": 7
+          }
+        },
+        {
+          "content": "est",
+          "polygon": [
+            5.2766,
+            2.3259,
+            5.4572,
+            2.3258,
+            5.4563,
+            2.4892,
+            5.2756,
+            2.4892
+          ],
+          "confidence": 0.999,
+          "span": {
+            "offset": 562,
+            "length": 3
+          }
+        },
+        {
+          "content": "Lorem",
+          "polygon": [
+            5.5209,
+            2.3257,
+            5.9431,
+            2.3253,
+            5.9425,
+            2.4876,
+            5.5201,
+            2.489
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 566,
+            "length": 5
+          }
+        },
+        {
+          "content": "ipsum",
+          "polygon": [
+            6.0068,
+            2.3252,
+            6.3998,
+            2.3247,
+            6.3994,
+            2.4855,
+            6.0062,
+            2.4873
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 572,
+            "length": 5
+          }
+        },
+        {
+          "content": "dolor",
+          "polygon": [
+            6.4609,
+            2.3246,
+            6.7954,
+            2.324,
+            6.7953,
+            2.4833,
+            6.4606,
+            2.4852
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 578,
+            "length": 5
+          }
+        },
+        {
+          "content": "sit",
+          "polygon": [
+            6.8565,
+            2.3239,
+            7.0318,
+            2.3236,
+            7.0318,
+            2.4821,
+            6.8564,
+            2.483
+          ],
+          "confidence": 0.998,
+          "span": {
+            "offset": 584,
+            "length": 3
+          }
+        },
+        {
+          "content": "amet.",
+          "polygon": [
+            1.2187,
+            2.5293,
+            1.6159,
+            2.5291,
+            1.6159,
+            2.6541,
+            1.2187,
+            2.6564
+          ],
+          "confidence": 0.996,
+          "span": {
+            "offset": 588,
+            "length": 5
+          }
+        },
+        {
+          "content": "1",
+          "polygon": [
+            4.0863,
+            9.9519,
+            4.1712,
+            9.9518,
+            4.1752,
+            10.0705,
+            4.0863,
+            10.0735
+          ],
+          "confidence": 0.997,
+          "span": {
+            "offset": 594,
+            "length": 1
+          }
+        }
+      ],
+      "lines": [
+        {
+          "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod",
+          "polygon": [
+            1.3739,
+            1.1914,
+            7.0268,
+            1.1914,
+            7.0268,
+            1.3536,
+            1.3739,
+            1.3536
+          ],
+          "spans": [
+            {
+              "offset": 0,
+              "length": 79
+            }
+          ]
+        },
+        {
+          "content": "tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
+          "polygon": [
+            1.2269,
+            1.379,
+            7.0268,
+            1.379,
+            7.0268,
+            1.5463,
+            1.2269,
+            1.5463
+          ],
+          "spans": [
+            {
+              "offset": 80,
+              "length": 83
+            }
+          ]
+        },
+        {
+          "content": "eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea taki-",
+          "polygon": [
+            1.2218,
+            1.5716,
+            7.0268,
+            1.5716,
+            7.0268,
+            1.7338,
+            1.2218,
+            1.7338
+          ],
+          "spans": [
+            {
+              "offset": 164,
+              "length": 88
+            }
+          ]
+        },
+        {
+          "content": "mata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur",
+          "polygon": [
+            1.2218,
+            1.7643,
+            7.0218,
+            1.7643,
+            7.0218,
+            1.9214,
+            1.2218,
+            1.9214
+          ],
+          "spans": [
+            {
+              "offset": 253,
+              "length": 83
+            }
+          ]
+        },
+        {
+          "content": "sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna",
+          "polygon": [
+            1.2218,
+            1.9518,
+            7.0421,
+            1.9468,
+            7.0421,
+            2.109,
+            1.2218,
+            2.109
+          ],
+          "spans": [
+            {
+              "offset": 337,
+              "length": 82
+            }
+          ]
+        },
+        {
+          "content": "aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea",
+          "polygon": [
+            1.2218,
+            2.1343,
+            7.0421,
+            2.1343,
+            7.0421,
+            2.2966,
+            1.2218,
+            2.3016
+          ],
+          "spans": [
+            {
+              "offset": 420,
+              "length": 83
+            }
+          ]
+        },
+        {
+          "content": "rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit",
+          "polygon": [
+            1.2168,
+            2.3168,
+            7.0268,
+            2.3219,
+            7.0268,
+            2.4841,
+            1.2168,
+            2.4841
+          ],
+          "spans": [
+            {
+              "offset": 504,
+              "length": 83
+            }
+          ]
+        },
+        {
+          "content": "amet.",
+          "polygon": [
+            1.2168,
+            2.5247,
+            1.6122,
+            2.5247,
+            1.6122,
+            2.6514,
+            1.2168,
+            2.6514
+          ],
+          "spans": [
+            {
+              "offset": 588,
+              "length": 5
+            }
+          ]
+        },
+        {
+          "content": "1",
+          "polygon": [
+            4.0965,
+            9.9569,
+            4.1725,
+            9.9518,
+            4.1725,
+            10.0735,
+            4.0863,
+            10.0735
+          ],
+          "spans": [
+            {
+              "offset": 594,
+              "length": 1
+            }
+          ]
+        }
+      ],
+      "spans": [
+        {
+          "offset": 0,
+          "length": 595
+        }
+      ]
+    }
+  ],
+  "paragraphs": [
+    {
+      "spans": [
+        {
+          "offset": 0,
+          "length": 593
+        }
+      ],
+      "boundingRegions": [
+        {
+          "pageNumber": 1,
+          "polygon": [
+            1.2168,
+            1.1914,
+            7.0421,
+            1.1914,
+            7.0421,
+            2.6514,
+            1.2168,
+            2.6514
+          ]
+        }
+      ],
+      "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea taki- mata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    },
+    {
+      "spans": [
+        {
+          "offset": 594,
+          "length": 1
+        }
+      ],
+      "boundingRegions": [
+        {
+          "pageNumber": 1,
+          "polygon": [
+            4.0863,
+            9.9518,
+            4.1725,
+            9.9518,
+            4.1725,
+            10.0735,
+            4.0863,
+            10.0735
+          ]
+        }
+      ],
+      "content": "1"
+    }
+  ],
+  "styles": [],
+  "contentFormat": "text"
+}

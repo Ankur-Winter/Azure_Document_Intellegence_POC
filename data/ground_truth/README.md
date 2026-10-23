@@ -1,6 +1,8 @@
 # Ground-truth references
 
-Place human-reviewed references in this folder. These files are inputs to local evaluation and may contain text from your source documents; they are ignored by Git. Keep document contents and sensitive text out of commits.
+Place human-reviewed references in this folder. These files are inputs to local evaluation and may contain text from their source documents. The public demo includes references for T01–T03; other references are ignored by Git. Only commit reference text that has been cleared for public sharing.
+
+The bundled references are candidate drafts, not guaranteed-perfect gold labels. In particular, review the T02 table grids for merged cells, repeated headers, and footnotes, and verify text transcripts against their source files before relying on accuracy scores.
 
 For a test-matrix case, put the transcript filename in the row's `ground_truth` column. For example, if the matrix lists `contract.pdf`, you might set `ground_truth` to `contract.pdf.txt` and save the transcript as `data/ground_truth/contract.pdf.txt`.
 
