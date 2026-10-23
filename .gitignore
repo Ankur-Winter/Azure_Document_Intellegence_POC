@@ -1,0 +1,22 @@
+# Local Azure credentials. Keep .env.example as a placeholder template only.
+.env
+.env.*
+!.env.example
+
+# Python and editor-generated files
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+
+# User-supplied source documents and human-written references
+data/documents/*
+!data/documents/.gitkeep
+data/ground_truth/*
+!data/ground_truth/.gitkeep
+!data/ground_truth/README.md
+
+# API output, extracted text, and local dashboard/run history
+results/**
+!results/.gitkeep

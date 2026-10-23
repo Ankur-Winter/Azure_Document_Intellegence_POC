@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Intelligence | POC results</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172438;
+      --muted: #65738a;
+      --line: #e4eaf2;
+      --surface: #ffffff;
+      --canvas: #f3f6fb;
+      --blue: #315de8;
+      --blue-soft: #edf2ff;
+      --teal: #087f72;
+      --teal-soft: #e5f7f3;
+      --amber: #a25a0a;
+      --amber-soft: #fff4e5;
+      --red: #b42335;
+      --red-soft: #fff0f1;
+      --shadow: 0 12px 32px rgba(27, 49, 81, .06);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    button, input { font: inherit; }
+    .topbar { background: #12233b; color: white; padding: 14px max(24px, calc((100vw - 1440px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: .01em; }
+    .brand-mark { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 9px; background: linear-gradient(145deg, #80a3ff, #4f6bea); font-weight: 800; }
+    .top-meta { color: #c8d3e5; font-size: 12px; display: flex; align-items: center; gap: 14px; }
+    .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #52d6b4; margin-right: 6px; }
+    .shell { max-width: 1440px; margin: 0 auto; padding: 28px 24px 48px; }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+    .eyebrow { color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 5px 0 7px; font-size: clamp(25px, 3vw, 34px); line-height: 1.18; letter-spacing: -.035em; }
+    .intro p { color: var(--muted); margin: 0; max-width: 740px; }
+    .local-chip { flex: 0 0 auto; padding: 8px 12px; background: var(--teal-soft); border: 1px solid #c8eee5; border-radius: 999px; color: #09695f; font-weight: 700; font-size: 12px; }
+    .overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+    .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 16px 18px; min-height: 102px; }
+    .kpi-label { color: var(--muted); font-size: 12px; font-weight: 650; }
+    .kpi-value { font-size: 25px; font-weight: 750; letter-spacing: -.04em; margin-top: 4px; }
+    .kpi-note { color: #8b97a8; font-size: 11px; margin-top: 1px; }
+    .workspace { display: grid; grid-template-columns: 252px minmax(0, 1fr); gap: 18px; align-items: start; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 15px; box-shadow: var(--shadow); }
+    .case-nav { padding: 16px 12px 12px; position: sticky; top: 14px; }
+    .nav-title { margin: 0 8px 3px; font-size: 13px; font-weight: 750; }
+    .nav-caption { margin: 0 8px 12px; color: var(--muted); font-size: 11px; }
+    .search { width: 100%; border: 1px solid var(--line); border-radius: 9px; padding: 9px 10px; outline: none; margin-bottom: 10px; color: var(--ink); background: #fbfcfe; }
+    .search:focus { border-color: #91a8ff; box-shadow: 0 0 0 3px rgba(49, 93, 232, .1); }
+    .case-list { display: grid; gap: 4px; max-height: calc(100vh - 285px); overflow: auto; padding-right: 2px; }
+    .case-button { width: 100%; display: flex; justify-content: space-between; gap: 8px; align-items: center; background: transparent; border: 0; border-radius: 9px; padding: 9px 9px; color: var(--ink); cursor: pointer; text-align: left; }
+    .case-button:hover { background: #f5f7fb; }
+    .case-button.active { color: #2449c8; background: var(--blue-soft); }
+    .case-left { min-width: 0; }
+    .case-id { display: block; font-weight: 750; font-size: 12px; }
+    .case-type { display: block; color: var(--muted); font-size: 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 168px; }
+    .case-count { flex: 0 0 auto; background: #edf0f5; color: #5c6b80; min-width: 25px; text-align: center; border-radius: 999px; padding: 2px 6px; font-size: 10px; font-weight: 750; }
+    .case-button.active .case-count { background: #dbe5ff; color: #2449c8; }
+    .detail { min-width: 0; }
+    .case-head { padding: 21px 22px; margin-bottom: 15px; }
+    .case-head-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+    h2 { font-size: 23px; line-height: 1.25; letter-spacing: -.025em; margin: 3px 0 5px; }
+    .filename { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+    .tag { color: #4d5e76; background: #f1f4f8; border: 1px solid #e6ebf2; border-radius: 999px; font-size: 10px; padding: 4px 9px; font-weight: 650; }
+    .run-stamp { text-align: right; color: var(--muted); font-size: 11px; flex: 0 0 auto; }
+    .run-stamp strong { display: block; color: var(--ink); font-size: 12px; }
+    .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 20px 2px 10px; }
+    .section-heading h3 { margin: 0; font-size: 15px; letter-spacing: -.01em; }
+    .section-heading span { color: var(--muted); font-size: 11px; }
+    .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); gap: 12px; }
+    .model-card { padding: 16px; min-width: 0; }
+    .model-card.failed { border-color: #f0c4cb; }
+    .model-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .model-name { font-size: 13px; font-weight: 800; overflow-wrap: anywhere; }
+    .status { padding: 3px 8px; border-radius: 999px; font-size: 10px; font-weight: 750; text-transform: capitalize; }
+    .status.succeeded { color: #087263; background: var(--teal-soft); }
+    .status.failed { color: var(--red); background: var(--red-soft); }
+    .latency { margin: 16px 0 13px; }
+    .metric-line { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .metric-label { color: var(--muted); font-size: 11px; }
+    .metric-value { font-size: 18px; font-weight: 750; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .track { height: 5px; border-radius: 999px; background: #edf1f6; overflow: hidden; margin-top: 6px; }
+    .fill { display: block; height: 100%; background: linear-gradient(90deg, #75a0ff, #4564e8); border-radius: inherit; }
+    .score-group { border-top: 1px solid #edf0f4; padding-top: 11px; margin-top: 11px; }
+    .score-row { margin-top: 9px; }
+    .score-row:first-child { margin-top: 0; }
+    .score-row .metric-value { font-size: 13px; }
+    .score-note { display: block; color: #8793a4; font-size: 10px; margin-top: 3px; }
+    .result-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; }
+    .fact { background: #f7f9fc; border-radius: 9px; padding: 8px 9px; min-width: 0; }
+    .fact-label { color: #7b8798; display: block; font-size: 10px; }
+    .fact-value { display: block; font-size: 12px; font-weight: 700; margin-top: 2px; overflow-wrap: anywhere; }
+    .fact-value.pass { color: var(--teal); }
+    .fact-value.fail { color: var(--red); }
+    .confidence-card { margin-top: 12px; padding: 11px; border: 1px solid #e5ebf4; border-radius: 10px; background: #fbfcff; }
+    .confidence-title { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 11px; font-weight: 800; }
+    .confidence-subtitle { color: var(--muted); font-size: 10px; font-weight: 500; }
+    .confidence-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 8px; }
+    .confidence-stat { min-width: 0; padding: 7px 8px; border-radius: 8px; background: white; border: 1px solid #edf0f4; }
+    .confidence-stat span { display: block; color: var(--muted); font-size: 9px; }
+    .confidence-stat strong { display: block; margin-top: 2px; font-size: 13px; font-variant-numeric: tabular-nums; }
+    .confidence-track { height: 5px; border-radius: 999px; background: #e9eef6; overflow: hidden; margin-top: 8px; }
+    .confidence-fill { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #56b99f, #13816e); }
+    .confidence-note { margin: 6px 0 0; color: #78869a; font-size: 9px; }
+    .confidence-fields { margin-top: 9px; border-top: 1px solid #e7ecf3; padding-top: 8px; }
+    .confidence-fields summary { cursor: pointer; color: #354967; font-size: 10px; font-weight: 750; }
+    .confidence-table-wrap { max-height: 210px; overflow: auto; margin-top: 7px; border: 1px solid #e8edf4; border-radius: 7px; }
+    .confidence-table { min-width: 0; }
+    .confidence-table th, .confidence-table td { padding: 6px 8px; font-size: 9px; white-space: normal; }
+    .confidence-table td:last-child, .confidence-table th:last-child { width: 82px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .model-actions { display: flex; gap: 7px; margin-top: 13px; }
+    .small-button { cursor: pointer; border: 1px solid #dce4f0; background: white; color: #354967; padding: 6px 9px; border-radius: 8px; font-size: 10px; font-weight: 700; }
+    .small-button:hover { border-color: #9aafff; color: #2449c8; background: #f8faff; }
+    .error-text { color: var(--red); font-size: 11px; margin-top: 12px; overflow-wrap: anywhere; }
+    .empty { color: var(--muted); padding: 18px; text-align: center; }
+    .notice { margin-top: 13px; padding: 11px 13px; border-radius: 10px; color: #72500e; background: var(--amber-soft); border: 1px solid #f4dfb8; font-size: 11px; }
+    .notice strong { color: #694300; }
+    .metrics-help { margin-top: 19px; padding: 16px 18px; }
+    .metrics-help h3 { margin: 0 0 11px; font-size: 14px; }
+    .help-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 20px; }
+    .help-item strong { display: block; font-size: 11px; margin-bottom: 3px; }
+    .help-item p { color: var(--muted); font-size: 10px; margin: 0; }
+    .history { margin-top: 18px; overflow: hidden; }
+    .history-head { padding: 15px 18px 10px; display: flex; justify-content: space-between; align-items: baseline; }
+    .history-head h3 { margin: 0; font-size: 14px; }
+    .history-head span { font-size: 10px; color: var(--muted); }
+    .table-scroll { overflow: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 670px; }
+    th, td { border-top: 1px solid #edf0f4; padding: 9px 13px; text-align: left; font-size: 10px; white-space: nowrap; }
+    th { color: #748196; background: #fafbfd; font-weight: 700; }
+    td { color: #34445b; }
+    tr.latest td:first-child::after { content: "LATEST"; display: inline-block; margin-left: 7px; color: var(--blue); background: var(--blue-soft); border-radius: 999px; font-size: 8px; font-weight: 800; padding: 2px 5px; vertical-align: 1px; }
+    .viewer { border: 0; border-radius: 15px; padding: 0; width: min(900px, calc(100vw - 28px)); max-width: none; max-height: 85vh; box-shadow: 0 24px 80px rgba(10, 24, 48, .3); }
+    .viewer::backdrop { background: rgba(12, 25, 45, .56); }
+    .viewer-head { position: sticky; top: 0; z-index: 2; background: white; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--line); }
+    .viewer-head strong { font-size: 12px; }
+    .viewer-close { border: 0; background: #f1f4f8; border-radius: 7px; width: 28px; height: 28px; cursor: pointer; font-size: 18px; }
+    .viewer pre { background: #101a2a; color: #dbe7ff; margin: 0; padding: 17px; max-height: calc(85vh - 55px); overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .loading, .fatal { margin-top: 35px; padding: 30px; text-align: center; color: var(--muted); }
+    .fatal { color: var(--red); }
+    footer { color: #8994a5; font-size: 10px; margin-top: 20px; text-align: center; }
+    @media (max-width: 930px) {
+      .workspace { grid-template-columns: 205px minmax(0, 1fr); }
+      .help-grid { grid-template-columns: repeat(2, 1fr); }
+      .overview { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .topbar { padding: 12px 16px; }
+      .top-meta { display: none; }
+      .shell { padding: 20px 14px 35px; }
+      .intro { display: block; }
+      .local-chip { display: inline-block; margin-top: 12px; }
+      .workspace { display: flex; flex-direction: column; }
+      .case-nav { width: 100%; position: static; }
+      .case-list { display: flex; max-height: none; overflow-x: auto; padding-bottom: 4px; }
+      .case-button { flex: 0 0 120px; align-items: flex-start; }
+      .case-type { max-width: 95px; }
+      .case-count { margin-top: 3px; }
+      .detail { width: 100%; }
+      .run-stamp { display: none; }
+      .help-grid { grid-template-columns: 1fr; }
+      .overview { gap: 8px; }
+      .kpi { padding: 12px; min-height: 90px; }
+      .kpi-value { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">D</span><span>Document Intelligence POC</span></div>
+    <div class="top-meta"><span><i class="live-dot"></i>Saved results</span><span id="refreshed">Loading…</span></div>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <div>
+        <div class="eyebrow">Validation dashboard</div>
+        <h1>Document parsing results</h1>
+        <p>Review the latest saved result for each test case, compare models, and open the extracted text or original response.</p>
+      </div>
+      <div class="local-chip">Local results only · no Azure calls</div>
+    </section>
+
+    <section class="overview" id="overview" aria-label="Run overview"></section>
+
+    <div class="workspace">
+      <aside class="panel case-nav">
+        <h2 class="nav-title">Test cases</h2>
+        <p class="nav-caption" id="case-count-label">Choose a case to inspect</p>
+        <input id="case-search" class="search" type="search" placeholder="Search cases…" aria-label="Search test cases">
+        <nav class="case-list" id="case-list" aria-label="Test cases"></nav>
+      </aside>
+      <section class="detail" id="detail"><div class="panel loading">Loading saved metrics…</div></section>
+    </div>
+    <footer>Metrics come from local result files. Accuracy compares extracted text to the configured transcript; review the reference before using scores as a production claim.</footer>
+  </main>
+
+  <dialog class="viewer" id="viewer">
+    <div class="viewer-head"><strong id="viewer-title">Document result</strong><button class="viewer-close" id="viewer-close" aria-label="Close">×</button></div>
+    <pre id="viewer-content"></pre>
+  </dialog>
+
+  <script>
+    const state = { data: null, activeCase: null };
+    const MODEL_ORDER = ["prebuilt-read", "prebuilt-layout", "prebuilt-invoice"];
+    const $ = (selector) => document.querySelector(selector);
+
+    function esc(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    }
+    function num(value) {
+      if (value === null || value === undefined || String(value).trim() === "") return null;
+      const parsed = Number(value);
+      return Number.isFinite(parsed) ? parsed : null;
+    }
+    function bool(value) { return value === true || String(value).toLowerCase() === "true"; }
+    function fmtPercent(value) { return value === null ? "Not scored" : `${(value * 100).toFixed(2)}%`; }
+    function fmtSeconds(value) { return value === null ? "—" : `${value.toFixed(2)} s`; }
+    function fmtDate(value) {
+      if (!value) return "—";
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? value : date.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+    }
+    function rowsForCase(caseId) {
+      return state.data.results.filter((row) => row.case_id === caseId);
+    }
+    function latestRows(caseId) {
+      const all = rowsForCase(caseId).slice().sort((a, b) => (b.run_started_utc || "").localeCompare(a.run_started_utc || ""));
+      const selected = new Map();
+      for (const row of all) {
+        if (!selected.has(row.model_id) && row.status === "succeeded") selected.set(row.model_id, row);
+      }
+      for (const row of all) if (!selected.has(row.model_id)) selected.set(row.model_id, row);
+      return [...selected.values()].sort((a, b) => MODEL_ORDER.indexOf(a.model_id) - MODEL_ORDER.indexOf(b.model_id));
+    }
+    function summaryRow(row) {
+      const success = rowsForCase(row.case_id).filter((item) => item.model_id === row.model_id && item.status === "succeeded");
+      return success.length > 0;
+    }
+    function caseCoverage(caseMeta) {
+      const rows = rowsForCase(caseMeta.case_id);
+      const done = new Set(rows.filter((row) => row.status === "succeeded").map((row) => row.model_id));
+      const attempted = new Set(rows.map((row) => row.model_id));
+      if (attempted.size === 0 || done.size === attempted.size) {
+        return `${done.size} model${done.size === 1 ? "" : "s"}`;
+      }
+      return `${done.size}/${attempted.size} succeeded`;
+    }
+    function renderOverview() {
+      const cases = state.data.cases;
+      const completed = cases.filter((item) => latestRows(item.case_id).some((row) => row.status === "succeeded")).length;
+      const serviceResults = state.data.results.filter((row) => row.evaluation_type !== "offline_rescore");
+      const latest = serviceResults.filter((row) => row.status === "succeeded");
+      const models = new Set(latest.map((row) => row.model_id));
+      const times = latest.map((row) => num(row.latency_seconds)).filter((value) => value !== null).sort((a, b) => a - b);
+      const middle = times.length ? times[Math.floor(times.length / 2)] : null;
+      const succeeded = latest.length;
+      const latestTimestamp = state.data.results.map((row) => row.run_started_utc).filter(Boolean).sort().at(-1);
+      const cards = [
+        ["Test cases covered", `${completed} / ${cases.length}`, "Cases with at least one successful model result"],
+        ["Successful model runs", succeeded, "Saved document/model responses"],
+        ["Models compared", models.size, [...models].sort((a, b) => MODEL_ORDER.indexOf(a) - MODEL_ORDER.indexOf(b)).join(" · ") || "No results yet"],
+        ["Median service latency", fmtSeconds(middle), "Across saved successful requests; mixed documents/models"],
+      ];
+      $("#overview").innerHTML = cards.map(([label, value, note]) => `<article class="kpi"><div class="kpi-label">${esc(label)}</div><div class="kpi-value">${esc(value)}</div><div class="kpi-note">${esc(note)}</div></article>`).join("");
+      $("#refreshed").textContent = latestTimestamp ? `Latest saved evaluation ${fmtDate(latestTimestamp)}` : "No results saved";
+    }
+    function renderCaseList(filter = "") {
+      const normalized = filter.trim().toLowerCase();
+      const cases = state.data.cases.filter((item) => `${item.case_id} ${item.filename} ${item.input_type}`.toLowerCase().includes(normalized));
+      $("#case-count-label").textContent = `${cases.length} of ${state.data.cases.length} cases`;
+      $("#case-list").innerHTML = cases.map((item) => `
+        <button class="case-button ${item.case_id === state.activeCase ? "active" : ""}" data-case="${esc(item.case_id)}">
+          <span class="case-left"><span class="case-id">${esc(item.case_id)}</span><span class="case-type">${esc(item.input_type)}</span></span>
+          <span class="case-count">${esc(caseCoverage(item))}</span>
+        </button>`).join("") || `<div class="empty">No matching cases.</div>`;
+      document.querySelectorAll(".case-button").forEach((button) => button.addEventListener("click", () => {
+        state.activeCase = button.dataset.case;
+        renderCaseList($("#case-search").value);
+        renderDetail();
+      }));
+    }
+    function scoreBlock(label, field, note) {
+      const value = num(field);
+      const display = fmtPercent(value);
+      const width = value === null ? 0 : Math.max(0, Math.min(100, value * 100));
+      return `<div class="score-row"><div class="metric-line"><span class="metric-label">${esc(label)}</span><span class="metric-value">${esc(display)}</span></div><div class="track"><span class="fill" style="width:${width}%"></span></div><span class="score-note">${esc(note)}</span></div>`;
+    }
+    function fact(label, value, tone = "") {
+      return `<div class="fact"><span class="fact-label">${esc(label)}</span><span class="fact-value ${tone}">${esc(value)}</span></div>`;
+    }
+    function tablesText(row, caseMeta) {
+      const detected = num(row.tables_detected) ?? 0;
+      const expected = num(row.expected_table_count);
+      const accuracy = num(row.table_cell_accuracy);
+      if (expected === 0 && caseMeta.input_type.toLowerCase().includes("excel")) return "No structured tables (XLSX check)";
+      if (expected === null && detected === 0 && accuracy === null) return "Not scored";
+      let label = expected === null ? `${detected} detected` : `${detected} / ${expected} detected`;
+      if (row.table_shape_match !== "" && row.table_shape_match !== undefined) label += bool(row.table_shape_match) ? " · shapes match" : " · shapes differ";
+      if (accuracy !== null) label += ` · ${fmtPercent(accuracy)} cell accuracy`;
+      if (expected !== null && detected === 0 && expected > 0 && accuracy !== null) label += " (blank-cell matches can inflate this when no tables are returned)";
+      return label;
+    }
+    function figureText(row, caseMeta) {
+      if (num(caseMeta.expected_figure_count) === null) return "Not scored";
+      if (row.figure_detection_match === "" || row.figure_detection_match === undefined) return "Not scored for this model";
+      return `${row.figures_detected || 0} / ${caseMeta.expected_figure_count} detected${bool(row.figure_detection_match) ? " · match" : " · mismatch"}`;
+    }
+    function markerText(row) {
+      if (!row.embedded_image_marker) return "Not scored";
+      if (row.embedded_image_absent === "" || row.embedded_image_absent === undefined) return "Not scored";
+      return bool(row.embedded_image_absent) ? "Marker absent as expected" : "Marker found in extracted text";
+    }
+    function confidenceBlock(row) {
+      if (row.status !== "succeeded") return "";
+      const summary = row.confidence || {};
+      const word = summary.word;
+      const fields = Array.isArray(summary.fields) ? summary.fields.slice().sort((a, b) => num(a.confidence) - num(b.confidence)) : [];
+      let wordHtml = `<div class="confidence-note">No per-word confidence values were included in this response.</div>`;
+      if (word && num(word.count) !== null) {
+        const mean = num(word.mean);
+        const median = num(word.median);
+        const minimum = num(word.minimum);
+        const width = mean === null ? 0 : Math.max(0, Math.min(100, mean * 100));
+        wordHtml = `<div class="confidence-stats">
+          <div class="confidence-stat"><span>Mean · ${esc(word.count)} words</span><strong>${esc(fmtPercent(mean))}</strong></div>
+          <div class="confidence-stat"><span>Median</span><strong>${esc(fmtPercent(median))}</strong></div>
+          <div class="confidence-stat"><span>Lowest word</span><strong>${esc(fmtPercent(minimum))}</strong></div>
+        </div><div class="confidence-track" aria-label="Mean word confidence"><span class="confidence-fill" style="width:${width}%"></span></div>
+        <p class="confidence-note">${esc(word.below_80_count ?? 0)} word(s) below 80% confidence. This is a review cue, not an accuracy score.</p>`;
+      }
+      const fieldsHtml = fields.length ? `<details class="confidence-fields"><summary>Invoice field confidence · ${fields.length} returned fields</summary>
+        <div class="confidence-table-wrap"><table class="confidence-table"><thead><tr><th>Field</th><th>Confidence</th></tr></thead><tbody>${fields.map((field) => `<tr><td>${esc(field.name)}</td><td>${esc(fmtPercent(num(field.confidence)))}</td></tr>`).join("")}</tbody></table></div>
+        <p class="confidence-note">Only fields returned by the Invoice model appear here. A missing field is not assigned a confidence score.</p></details>` : "";
+      return `<section class="confidence-card" aria-label="Azure confidence signals"><div class="confidence-title"><span>Confidence signals</span><span class="confidence-subtitle">Service estimates · separate from transcript accuracy</span></div>${wordHtml}${fieldsHtml}</section>`;
+    }
+    function modelCard(row, caseMeta, maxLatency) {
+      const succeeded = row.status === "succeeded";
+      const latency = num(row.latency_seconds);
+      const accuracyNote = bool(row.reference_available) ? "Similarity to configured transcript; not semantic accuracy" : "No usable transcript was available";
+      const pageExpected = num(row.expected_page_units);
+      const pageDisplay = pageExpected === null ? `${row.page_units || 0} units` : `${row.page_units || 0} / ${pageExpected} units${row.page_unit_count_match === "" ? "" : bool(row.page_unit_count_match) ? " · match" : " · mismatch"}`;
+      const paraExpected = num(row.expected_paragraph_count);
+      const paraDisplay = paraExpected === null ? `${row.paragraphs_detected || 0} detected` : `${row.paragraphs_detected || 0} / ${paraExpected}${row.paragraph_count_match === "" ? "" : bool(row.paragraph_count_match) ? " · match" : " · mismatch"}`;
+      const exact = row.exact_match === "" || row.exact_match === undefined ? "Not scored" : bool(row.exact_match) ? "Exact transcript match" : "Not an exact match";
+      const hasOutput = succeeded && row.run_id && row.file;
+      const invoiceNote = row.model_id === "prebuilt-invoice" ? `<div class="notice"><strong>Invoice fields:</strong> Structured values are available in the raw JSON. Current accuracy bars score transcript similarity, not field-by-field invoice correctness.</div>` : "";
+      const rescoreNote = row.evaluation_type === "offline_rescore" ? `<div class="notice"><strong>Offline re-score:</strong> recalculated from the saved Azure response in run ${esc(row.source_run_id || "unknown")}. No new Azure request was made; latency is from that original run.</div>` : "";
+      return `<article class="panel model-card ${succeeded ? "" : "failed"}">
+        <div class="model-top"><span class="model-name">${esc(row.model_id)}</span><span class="status ${succeeded ? "succeeded" : "failed"}">${esc(row.status || "unknown")}</span></div>
+        <div class="latency"><div class="metric-line"><span class="metric-label">Service latency</span><span class="metric-value">${esc(fmtSeconds(latency))}</span></div><div class="track"><span class="fill" style="width:${latency === null || !maxLatency ? 0 : Math.max(4, latency / maxLatency * 100)}%"></span></div></div>
+        <div class="score-group">${scoreBlock("Character accuracy", row.character_accuracy, accuracyNote)}${scoreBlock("Word accuracy", row.word_accuracy, "Both scores ignore case and collapse whitespace")}</div>
+        <div class="result-facts">
+          ${fact("Page units", pageDisplay, row.page_unit_count_match !== "" && row.page_unit_count_match !== undefined ? bool(row.page_unit_count_match) ? "pass" : "fail" : "")}
+          ${fact("Paragraphs", paraDisplay, row.paragraph_count_match !== "" && row.paragraph_count_match !== undefined ? bool(row.paragraph_count_match) ? "pass" : "fail" : "")}
+          ${fact("Tables", tablesText(row, caseMeta))}
+          ${fact("Figures", figureText(row, caseMeta))}
+          ${fact("Embedded-image check", markerText(row), row.embedded_image_absent !== "" && row.embedded_image_absent !== undefined ? bool(row.embedded_image_absent) ? "pass" : "fail" : "")}
+          ${fact("Transcript match", exact, row.exact_match !== "" && row.exact_match !== undefined ? bool(row.exact_match) ? "pass" : "fail" : "")}
+        </div>
+        ${confidenceBlock(row)}
+        ${row.error ? `<div class="error-text">${esc(row.error)}</div>` : ""}
+        ${rescoreNote}
+        ${invoiceNote}
+        ${hasOutput ? `<div class="model-actions"><button class="small-button" data-output="text" data-run="${esc(row.run_id)}" data-model="${esc(row.model_id)}" data-file="${esc(row.file)}">Extracted text</button><button class="small-button" data-output="json" data-run="${esc(row.run_id)}" data-model="${esc(row.model_id)}" data-file="${esc(row.file)}">Raw response JSON</button></div>` : ""}
+      </article>`;
+    }
+    function latestSuccessMap(caseId) {
+      const map = new Map();
+      const rows = rowsForCase(caseId).slice().sort((a, b) => (b.run_started_utc || "").localeCompare(a.run_started_utc || ""));
+      for (const row of rows) if (row.status === "succeeded" && !map.has(row.model_id)) map.set(row.model_id, row);
+      if (!map.size) for (const row of rows) if (!map.has(row.model_id)) map.set(row.model_id, row);
+      return map;
+    }
+    function renderHistory(caseId, latestMap) {
+      const rows = rowsForCase(caseId).slice().sort((a, b) => (b.run_started_utc || "").localeCompare(a.run_started_utc || ""));
+      if (!rows.length) return `<div class="panel empty">No saved results for this case yet.</div>`;
+      return `<section class="panel history"><div class="history-head"><h3>Run history</h3><span>Latest successful result per model is shown above</span></div><div class="table-scroll"><table><thead><tr><th>Run time</th><th>Model</th><th>Status</th><th>Latency</th><th>Character</th><th>Word</th><th>Pages</th></tr></thead><tbody>${rows.map((row) => {
+        const latest = latestMap.get(row.model_id)?.run_id === row.run_id && latestMap.get(row.model_id)?.model_id === row.model_id;
+        const pageExpected = num(row.expected_page_units);
+        const pageDisplay = pageExpected === null ? `${row.page_units || "—"}` : `${row.page_units || "—"}/${pageExpected}`;
+        const statusLabel = row.evaluation_type === "offline_rescore" ? "Offline re-score" : row.status;
+        return `<tr class="${latest ? "latest" : ""}"><td>${esc(fmtDate(row.run_started_utc))}</td><td>${esc(row.model_id)}</td><td><span class="status ${row.status === "succeeded" ? "succeeded" : "failed"}">${esc(statusLabel)}</span></td><td>${esc(fmtSeconds(num(row.latency_seconds)))}</td><td>${esc(fmtPercent(num(row.character_accuracy)))}</td><td>${esc(fmtPercent(num(row.word_accuracy)))}</td><td>${esc(pageDisplay)}</td></tr>`;
+      }).join("")}</tbody></table></div></section>`;
+    }
+    function renderDetail() {
+      const caseMeta = state.data.cases.find((item) => item.case_id === state.activeCase);
+      if (!caseMeta) return;
+      const map = latestSuccessMap(caseMeta.case_id);
+      const modelRows = [...map.values()].sort((a, b) => MODEL_ORDER.indexOf(a.model_id) - MODEL_ORDER.indexOf(b.model_id));
+      const latencies = modelRows.map((row) => num(row.latency_seconds)).filter((value) => value !== null);
+      const maxLatency = Math.max(0, ...latencies);
+      const lastRun = modelRows.map((row) => row.run_started_utc).filter(Boolean).sort().at(-1);
+      const expectedPages = caseMeta.expected_page_units === null ? "Page count not specified" : `${caseMeta.expected_page_units} expected page units`;
+      const note = caseMeta.notes ? `<div class="notice"><strong>Case note:</strong> ${esc(caseMeta.notes)}</div>` : "";
+      const noRows = modelRows.length === 0;
+      $("#detail").innerHTML = `
+        <section class="panel case-head">
+          <div class="case-head-row"><div><div class="eyebrow">Test case ${esc(caseMeta.case_id)}</div><h2>${esc(caseMeta.validation)}</h2><div class="filename">${esc(caseMeta.filename)}</div><div class="case-tags"><span class="tag">${esc(caseMeta.input_type)}</span><span class="tag">${esc(expectedPages)}</span><span class="tag">${esc(caseCoverage(caseMeta))}</span></div></div><div class="run-stamp">Latest result<strong>${esc(fmtDate(lastRun))}</strong></div></div>
+          ${note}
+        </section>
+        <div class="section-heading"><h3>Model comparison</h3><span>Latest saved successful result for each model</span></div>
+        ${noRows ? `<div class="panel empty">No run has been saved for this case yet. Run the selected case from the CLI to populate this view.</div>` : `<section class="model-grid">${modelRows.map((row) => modelCard(row, caseMeta, maxLatency)).join("")}</section>`}
+        <section class="panel metrics-help"><h3>How to read these metrics</h3><div class="help-grid">
+          <div class="help-item"><strong>Service latency</strong><p>Time from submitting the document to receiving the completed analysis result. One sample is not a production SLA or throughput benchmark.</p></div>
+          <div class="help-item"><strong>Character / word accuracy</strong><p>1 − CER/WER against the configured transcript, after case and whitespace normalization. This is text similarity, not semantic or field correctness. Scores are floored at 0%.</p></div>
+          <div class="help-item"><strong>Confidence</strong><p>Azure's estimate for each recognized word; the Invoice model can also return confidence per extracted field. Mean, median, and lowest-word values summarize returned words only. Confidence is not measured accuracy.</p></div>
+          <div class="help-item"><strong>Page units</strong><p>Pages or slides reported by the service, compared with the expected count when the matrix provides one.</p></div>
+          <div class="help-item"><strong>Tables</strong><p>Detected table count and shape; cell accuracy compares normalized cell text against a table reference when one exists. Check count and shape alongside cell accuracy.</p></div>
+          <div class="help-item"><strong>Figures / embedded images</strong><p>Figure detection is scored only for configured cases/models. The Office image check verifies whether a marker inside an embedded image stays absent from extracted text.</p></div>
+          <div class="help-item"><strong>Ground truth</strong><p>Scores are only as reliable as the reviewed reference file. Date/number formatting, merged cells, reading order, and transcript mistakes can affect text scores.</p></div>
+        </div></section>
+        ${renderHistory(caseMeta.case_id, map)}`;
+      document.querySelectorAll("[data-output]").forEach((button) => button.addEventListener("click", () => showOutput(button.dataset)));
+    }
+    async function showOutput(data) {
+      const viewer = $("#viewer");
+      $("#viewer-title").textContent = `${data.model} · ${data.output === "json" ? "Raw response JSON" : "Extracted text"}`;
+      $("#viewer-content").textContent = "Loading saved response…";
+      viewer.showModal();
+      const query = new URLSearchParams({ run_id: data.run, model_id: data.model, filename: data.file });
+      try {
+        const response = await fetch(`/api/document?${query}`);
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Could not load response.");
+        $("#viewer-content").textContent = data.output === "json" ? JSON.stringify(payload.result, null, 2) : (payload.text || "(No extracted text was saved.)");
+      } catch (error) {
+        $("#viewer-content").textContent = `Could not load saved response: ${error.message}`;
+      }
+    }
+    async function start() {
+      try {
+        const response = await fetch("/api/data");
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Unable to read result files.");
+        state.data = payload;
+        if (!payload.cases.length) throw new Error("No test cases were found in data/test_matrix.csv.");
+        state.activeCase = payload.cases[0].case_id;
+        renderOverview();
+        renderCaseList();
+        renderDetail();
+        $("#case-search").addEventListener("input", (event) => renderCaseList(event.target.value));
+        $("#viewer-close").addEventListener("click", () => $("#viewer").close());
+      } catch (error) {
+        $("#detail").innerHTML = `<div class="panel fatal">${esc(error.message)}</div>`;
+      }
+    }
+    start();
+  </script>
+</body>
+</html>
